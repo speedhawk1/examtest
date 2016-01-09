@@ -22,7 +22,7 @@
                 </#list>
                 <th colspan="2">OPERATION</th>
             </tr>
-            <c:forEach var="${model?lower_case}" items="${'$'}{sessionScope.list}" varStatus="vs">
+            <c:forEach var="${model?lower_case}" items="${'$'}{sessionScope.pagination.list}" varStatus="vs">
             <tr>
                 <td>${'$'}{vs.count}</td>
                 <td>${'$'}{${model?lower_case}.id}</td>
@@ -35,5 +35,8 @@
             </tr>
             </c:forEach>
         </table>
+        <c:import url="${ctx}/commons/page.jsp">
+            <c:param name="path" value="word/${sessionScope.pagination.selectId}"/>
+        </c:import>
     </body>
 </html>

@@ -2,6 +2,7 @@ package com.bdc.service.impl;
 
 import com.bdc.dao.GenericDao;
 import com.bdc.service.GenericService;
+import com.bdc.util.Pagination;
 
 import java.io.Serializable;
 import java.util.List;
@@ -31,8 +32,8 @@ public abstract class GenericServiceImpl<T extends Serializable, ID extends Seri
     }
 
     @Override
-    public List<T> list() {
-        return genericDao.list();
+    public Pagination<T> list(int page) {
+        return genericDao.list(page);
     }
 
     @Override

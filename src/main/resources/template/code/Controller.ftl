@@ -32,10 +32,15 @@ public class ${model}Controller extends BaseController {
         return "redirect:/${model?lower_case}/list";
     }
 
+    @RequestMapping("list/{page}")
+    private String list(@PathVariable int page) {
+        getSession().setAttribute("pagination", ${model?lower_case}Service.list(page));
+        return "redirect:/${model?lower_case}/list.jsp";
+    }
+
     @RequestMapping("list")
     private String list() {
-        getSession().setAttribute("list", ${model?lower_case}Service.list());
-        return "redirect:/${model?lower_case}/list.jsp";
+        return list(1);
     }
 
     @RequestMapping("search/{id}")

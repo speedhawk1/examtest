@@ -1,5 +1,7 @@
 package com.bdc.dao;
 
+import com.bdc.util.Pagination;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -10,7 +12,7 @@ public interface GenericDao<T extends Serializable, ID extends Serializable> {
     void add(T t);
     void remove(ID id);
     void modify(T model);
-    List<T> list();
+    Pagination<T> list(int page);
     T query(T t);
     T search(ID id);
 }

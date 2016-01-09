@@ -1,6 +1,9 @@
 package com.bdc.dao.impl;
 
 import com.bdc.dao.GenericDao;
+import com.bdc.util.Constant;
+import com.bdc.util.Pagination;
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,11 +60,8 @@ public class GenericDaoImpl<T extends Serializable, ID extends Serializable> imp
     }
 
     @Override
-    public List<T> list() {
-        SqlSession sqlSession = sqlSessionFactory.openSession();
-        List<T> list = sqlSession.selectList(namespace.concat("list"));
-        sqlSession.close();
-        return list;
+    public Pagination<T> list(int page) {
+        return page(page, null, "list");
     }
 
     @Override
@@ -69,5 +69,32 @@ public class GenericDaoImpl<T extends Serializable, ID extends Serializable> imp
         SqlSession sqlSession = sqlSessionFactory.openSession(true);
         sqlSession.update(namespace.concat("modify"), model);
         sqlSession.close();
+    }
+
+    // Pagination
+
+    private Pagination<T> page(int page, Object parameter, String selectId) {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        List<T> list = sqlSession.selectList(namespace.concat(selectId), parameter, getRowBounds(page));
+        sqlSession.close();
+        return getPagination(page, list, selectId, parameter);
+    }
+
+    private RowBounds getRowBounds(int page) {
+        int offset = Constant.PAGE_SIZE * (page - 1);
+        return new RowBounds(offset, Constant.PAGE_SIZE);
+    }
+
+    private Pagination<T> getPagination(int page, List<T> list, String selectId, Object parameter) {
+        int totalRows = getTotalRows(selectId, parameter);
+        int totalPages = (int) Math.ceil(totalRows / (double) Constant.PAGE_SIZE);
+        return new Pagination<>(list, selectId, Constant.PAGE_SIZE, totalRows, totalPages, page);
+    }
+
+    private int getTotalRows(String selectId, Object parameter) {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        List<T> list = sqlSession.selectList(namespace.concat(selectId), parameter);
+        sqlSession.close();
+        return list.size();
     }
 }
