@@ -1,11 +1,10 @@
-package com.bdc.service.impl;
+package com.example.service.impl;
 
-import com.bdc.dao.GenericDao;
-import com.bdc.service.GenericService;
-import com.bdc.util.Pagination;
+import com.example.dao.GenericDao;
+import com.example.service.GenericService;
+import com.example.util.Pagination;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * Created by Administrator on 2015/12/27.

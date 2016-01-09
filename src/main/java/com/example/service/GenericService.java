@@ -1,9 +1,8 @@
-package com.bdc.service;
+package com.example.service;
 
-import com.bdc.util.Pagination;
+import com.example.util.Pagination;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * Created by Administrator on 2015/12/27.

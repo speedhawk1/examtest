@@ -1,6 +1,5 @@
-package com.bdc.controller;
+package com.example.controller;
 
-import lombok.Data;
 import lombok.Getter;
 import org.springframework.web.bind.annotation.ModelAttribute;
 

@@ -1,8 +1,8 @@
-package com.bdc.dao.impl;
+package com.example.dao.impl;
 
-import com.bdc.dao.GenericDao;
-import com.bdc.util.Constant;
-import com.bdc.util.Pagination;
+import com.example.dao.GenericDao;
+import com.example.util.Constant;
+import com.example.util.Pagination;
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;

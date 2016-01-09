@@ -1,6 +1,6 @@
-package com.bdc.service;
+package com.example.service;
 
-import com.bdc.model.User;
+import com.example.model.User;
 
 /**
  * Created by Administrator on 2015/12/27.

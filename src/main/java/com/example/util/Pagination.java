@@ -1,4 +1,4 @@
-package com.bdc.util;
+package com.example.util;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

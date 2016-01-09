@@ -35,8 +35,8 @@
             </tr>
             </c:forEach>
         </table>
-        <c:import url="${ctx}/commons/page.jsp">
-            <c:param name="path" value="word/${sessionScope.pagination.selectId}"/>
+        <c:import url="${'$'}{ctx}/commons/page.jsp">
+            <c:param name="path" value="${model?lower_case}/${'$'}{sessionScope.pagination.selectId}"/>
         </c:import>
     </body>
 </html>

@@ -1,4 +1,4 @@
-package com.bdc.util;
+package com.example.util;
 
 /**
  * Created by Administrator on 2016/1/3.

@@ -1,7 +1,7 @@
-package com.bdc.dao.impl;
+package com.example.dao.impl;
 
-import com.bdc.dao.UserDao;
-import com.bdc.model.User;
+import com.example.dao.UserDao;
+import com.example.model.User;
 import org.springframework.stereotype.Repository;
 
 /**

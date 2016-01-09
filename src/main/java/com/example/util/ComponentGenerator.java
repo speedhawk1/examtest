@@ -1,4 +1,4 @@
-package com.bdc.util;
+package com.example.util;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -17,8 +17,8 @@ import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 class ComponentGenerator {
 
     // Configuration
-    private final static String PACKAGE = "com.bdc";
-    private final static String DATABASE = "bdc";
+    private final static String PACKAGE = "com.example";
+    private final static String DATABASE = "exam";
 
     private final static String CODE_PATH = "src/main/java/";
     private static final String PAGE_PATH = "src/main/webapp/";
