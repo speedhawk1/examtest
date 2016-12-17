@@ -10,5 +10,6 @@
     password: <input name="password" type="password" value="a"><br/>
     <input type="submit" value="LOGIN">
 </form>
+${requestScope.message}
 </body>
 </html>
