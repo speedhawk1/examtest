@@ -5,11 +5,11 @@
         <title>${model?uncap_first} add page</title>
     </head>
     <body>
-        <h1>${model} Add Page</h1>
+        <h1>ADD ${model}</h1>
         <form action="${'$'}{ctx}/${model?lower_case}/add" method="post">
             <#assign keys = properties?keys>
             <#list keys as key>
-            ${key?upper_case}: <input name="${key}"><br>
+            <input name="${key}" placeholder="${key?upper_case}"><br>
             </#list>
             <input type="submit" value="ADD">
         </form>

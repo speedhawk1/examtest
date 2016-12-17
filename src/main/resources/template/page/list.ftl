@@ -8,14 +8,13 @@
         </script>
     </head>
     <body>
-        <h1>${model} List Page</h1>
-        <hr/>
         <c:import url="add.jsp"/>
+        <hr/>
+        <h1>LIST ${model}</h1>
         <hr/>
         <table border="1">
             <tr>
                 <th>INDEX</th>
-                <th>ID</th>
                 <#assign keys = properties?keys>
                 <#list keys as key>
                 <th>${key?upper_case}</th>
@@ -25,7 +24,6 @@
             <c:forEach var="${model?lower_case}" items="${'$'}{sessionScope.pagination.list}" varStatus="vs">
             <tr>
                 <td>${'$'}{vs.count}</td>
-                <td>${'$'}{${model?lower_case}.id}</td>
                 <#assign keys = properties?keys>
                 <#list keys as key>
                 <td>${'$'}{${model?lower_case}.${key}}</td>

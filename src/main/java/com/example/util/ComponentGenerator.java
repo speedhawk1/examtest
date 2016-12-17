@@ -93,7 +93,7 @@ class ComponentGenerator {
             case "code":
                 file = new File(PATH + "/" + tpl.toLowerCase().replace('.', '/') + "/" + model + tpl.replace(".", "") + ".java");
                 if (tpl.equals("Model")) {
-                    file = new File(PATH + "/model/" + model);
+                    file = new File(PATH + "/model/" + model + ".java");
                 }
                 name = "code/" + tpl + ".ftl";
                 break;
