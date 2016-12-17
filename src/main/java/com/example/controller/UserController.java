@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- *
  * Created by Administrator on 2015/12/20.
  */
 @Controller
@@ -21,12 +20,28 @@ public class UserController extends BaseController {
         this.userService = userService;
     }
 
+    @RequestMapping("register")
+    private String register(User user) {
+        if (userService.register(user)) {
+            return "redirect:/default.jsp";
+        } else {
+            getRequest().setAttribute("message", "username exist.");
+            return "signup";
+        }
+    }
+
     @RequestMapping("login")
     private String login(User user) {
         user = userService.login(user);
         if (user != null) {
             getSession().setAttribute("user", user);
-            return "index";
+            if (user.getRole().equals("admin")) {
+                return "redirect:/admin.jsp";
+            }
+            if (user.getRole().equals("user")) {
+                return "redirect:/user.jsp";
+            }
+            return "redirect:/index.jsp";
         } else {
             getRequest().setAttribute("message", "invalid username or password.");
             return "default";
@@ -36,6 +51,6 @@ public class UserController extends BaseController {
     @RequestMapping("logout")
     private String logout() {
         getSession().invalidate();
-        return "default";
+        return "redirect:/default.jsp";
     }
 }

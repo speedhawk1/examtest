@@ -11,5 +11,7 @@
     <input type="submit" value="LOGIN">
 </form>
 ${requestScope.message}
+<hr>
+<a href="${ctx}/signup.jsp">SIGN UP</a>
 </body>
 </html>

@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 /**
- *
  * Created by Administrator on 2015/12/27.
  */
 @Service
@@ -29,5 +28,17 @@ public class UserServiceImpl extends GenericServiceImpl<User, Integer> implement
         } else {
             return null;
         }
+    }
+
+    @Override
+    public boolean register(User user) {
+        String password = user.getPassword();
+        user.setPassword(null);
+        if (genericDao.query(user) != null) {
+            return false;
+        }
+        user.setPassword(password);
+        genericDao.add(user);
+        return true;
     }
 }

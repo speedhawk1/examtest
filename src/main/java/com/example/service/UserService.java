@@ -8,4 +8,6 @@ import com.example.model.User;
  */
 public interface UserService extends GenericService<User, Integer> {
     User login(User user);
+
+    boolean register(User user);
 }
