@@ -6,5 +6,4 @@ import ${package}.dao.${model}Dao;
 import ${package}.model.${model};
 
 @Repository
-public class ${model}DaoImpl extends GenericDaoImpl<${model}, ${PK}> implements ${model}Dao {
-}
+public class ${model}DaoImpl extends GenericDaoImpl<${model}, ${PK}> implements ${model}Dao {}

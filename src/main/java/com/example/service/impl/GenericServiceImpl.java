@@ -7,11 +7,12 @@ import com.example.util.Pagination;
 import java.io.Serializable;
 
 /**
+ *
  * Created by Administrator on 2015/12/27.
  */
 public abstract class GenericServiceImpl<T extends Serializable, ID extends Serializable> implements GenericService<T, ID> {
 
-    protected GenericDao<T, ID> genericDao;
+    GenericDao<T, ID> genericDao;
 
     protected abstract void setGenericDao(GenericDao<T, ID> genericDao);
 

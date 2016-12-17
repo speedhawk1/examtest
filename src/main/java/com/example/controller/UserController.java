@@ -7,16 +7,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
+ *
  * Created by Administrator on 2015/12/20.
  */
 @Controller
-@RequestMapping("/user")
+@RequestMapping("user")
 public class UserController extends BaseController {
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
 
-    @RequestMapping("/login")
+    @Autowired
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+
+    @RequestMapping("login")
     private String login(User user) {
         user = userService.login(user);
         if (user != null) {
@@ -28,7 +33,7 @@ public class UserController extends BaseController {
         }
     }
 
-    @RequestMapping("/logout")
+    @RequestMapping("logout")
     private String logout() {
         getSession().invalidate();
         return "default";

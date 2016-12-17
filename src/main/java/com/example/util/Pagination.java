@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
+ *
  * Created by Administrator on 2016/1/3.
  */
 @Data
@@ -16,7 +17,6 @@ import java.util.List;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 public class Pagination<T extends Serializable> implements Serializable {
-
     private List<T> list;
     private String selectId;
     private int pageSize;

@@ -18,7 +18,7 @@
     </insert>
     <delete id="remove">
         DELETE FROM ${db}.${table}
-        WHERE id = ${'#'}{id}
+        WHERE ${table}.id = ${'#'}{id}
     </delete>
     <update id="modify">
         UPDATE ${db}.${table}
@@ -26,7 +26,7 @@
     <#list columns?keys as key>
     ${key} = ${'#'}{${columns[key]}}<#if key_has_next>, </#if>
     </#list>
-        WHERE id = ${'#'}{id}
+        WHERE ${table}.id = ${'#'}{id}
     </update>
     <select id="list" resultType="${model?lower_case}">
         SELECT *
@@ -38,7 +38,7 @@
         FROM ${db}.${table}
         <where>
             <if test="id != null and id != ''">
-                id = ${'#'}{id}
+                ${table}.id = ${'#'}{id}
             </if>
         <#list columns?keys as key>
             <if test="${key} != null and ${key} != ''"> AND ${key} LIKE "%"${'#'}{${columns[key]}}"%"</if>
@@ -48,6 +48,6 @@
     <select id="search" resultType="${model?lower_case}">
         SELECT *
         FROM ${db}.${table}
-        WHERE id = ${'#'}{id}
+        WHERE ${table}.id = ${'#'}{id}
     </select>
 </mapper>

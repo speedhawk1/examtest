@@ -11,8 +11,12 @@ import ${package}.service.${model}Service;
 @RequestMapping("${model?lower_case}")
 public class ${model}Controller extends BaseController {
 
+    private final ${model}Service ${model?lower_case}Service;
+
     @Autowired
-    private ${model}Service ${model?lower_case}Service;
+    public ${model}Controller(${model}Service ${model?lower_case}Service) {
+        this.${model?lower_case}Service = ${model?lower_case}Service;
+    }
 
     @RequestMapping("add")
     private String add(${model} ${model?lower_case}) {
