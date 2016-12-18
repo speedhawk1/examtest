@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="${model?lower_case}">
-    <insert id="add" parameterType="${model}" useGeneratedKeys="true" keyProperty="id">
+    <insert id="add" parameterType="${model?lower_case}" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO ${db}.${table} (
     <#list columns?keys as key>
     ${key}<#if key_has_next>, </#if>
@@ -38,7 +38,7 @@
         FROM ${db}.${table}
         <where>
             <if test="id != null and id != ''">
-                ${table}.id = ${'#'}{id}
+            ${table}.id = ${'#'}{id}
             </if>
         <#list columns?keys as key>
             <if test="${key} != null and ${key} != ''"> AND ${key} LIKE "%"${'#'}{${columns[key]}}"%"</if>
