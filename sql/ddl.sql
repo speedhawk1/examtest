@@ -1,3 +1,4 @@
+DROP DATABASE IF EXISTS exam;
 CREATE DATABASE IF NOT EXISTS exam;
 
 # user table
