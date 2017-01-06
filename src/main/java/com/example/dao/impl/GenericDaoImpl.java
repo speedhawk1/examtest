@@ -56,15 +56,20 @@ public class GenericDaoImpl<T extends Serializable, ID extends Serializable> imp
     }
 
     @Override
+    public Pagination<T> query(int page, String statement, Object parameter) {
+        return page(page, parameter, statement);
+    }
+
+    @Override
     public void modify(T model) {
         sqlSession.update(namespace.concat("modify"), model);
     }
 
     // Pagination
 
-    private Pagination<T> page(int page, Object parameter, String selectId) {
-        List<T> list = sqlSession.selectList(namespace.concat(selectId), parameter, getRowBounds(page));
-        return getPagination(page, list, selectId, parameter);
+    private Pagination<T> page(int page, Object parameter, String statement) {
+        List<T> list = sqlSession.selectList(namespace.concat(statement), parameter, getRowBounds(page));
+        return getPagination(page, list, statement, parameter);
     }
 
     private RowBounds getRowBounds(int page) {
