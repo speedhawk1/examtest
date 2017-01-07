@@ -67,20 +67,20 @@ public class GenericDaoImpl<T extends Serializable, ID extends Serializable> imp
 
     // Pagination
 
-    private Pagination<T> page(int page, Object parameter, String statement) {
-        List<T> list = sqlSession.selectList(namespace.concat(statement), parameter, getRowBounds(page));
-        return getPagination(page, list, statement, parameter);
+    private Pagination<T> page(int currentPage, Object parameter, String statement) {
+        List<T> list = sqlSession.selectList(namespace.concat(statement), parameter, getRowBounds(currentPage));
+        return getPagination(currentPage, list, statement, parameter);
     }
 
-    private RowBounds getRowBounds(int page) {
-        int offset = Constant.PAGE_SIZE * (page - 1);
+    private RowBounds getRowBounds(int currentPage) {
+        int offset = Constant.PAGE_SIZE * (currentPage - 1);
         return new RowBounds(offset, Constant.PAGE_SIZE);
     }
 
-    private Pagination<T> getPagination(int page, List<T> list, String statement, Object parameter) {
+    private Pagination<T> getPagination(int currentPage, List<T> list, String statement, Object parameter) {
         int totalRows = getTotalRows(statement, parameter);
         int totalPages = (int) Math.ceil(totalRows / (double) Constant.PAGE_SIZE);
-        return new Pagination<>(list, statement, Constant.PAGE_SIZE, totalRows, totalPages, page);
+        return new Pagination<>(list, statement, Constant.PAGE_SIZE, totalRows, totalPages, currentPage);
     }
 
     private int getTotalRows(String statement, Object parameter) {

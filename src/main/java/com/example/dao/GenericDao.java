@@ -12,8 +12,8 @@ public interface GenericDao<T extends Serializable, ID extends Serializable> {
     void add(T t);
     void remove(ID id);
     void modify(T model);
-    Pagination<T> list(int page);
-    Pagination<T> query(int page, String statement, Object parameter);
+    Pagination<T> list(int currentPage);
+    Pagination<T> query(int currentPage, String statement, Object parameter);
     T query(T t);
     T search(ID id);
 }

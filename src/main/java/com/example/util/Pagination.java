@@ -18,7 +18,7 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = false)
 public class Pagination<T extends Serializable> implements Serializable {
     private List<T> list;
-    private String selectId;
+    private String statement;
     private int pageSize;
     private int totalRows;
     private int totalPages;

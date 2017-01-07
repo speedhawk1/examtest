@@ -32,13 +32,13 @@ public abstract class GenericServiceImpl<T extends Serializable, ID extends Seri
     }
 
     @Override
-    public Pagination<T> list(int page) {
-        return genericDao.list(page);
+    public Pagination<T> list(int currentPage) {
+        return genericDao.list(currentPage);
     }
 
     @Override
-    public Pagination<T> query(int page, String statement, Object parameter) {
-        return genericDao.query(page, statement, parameter);
+    public Pagination<T> query(int currentPage, String statement, Object parameter) {
+        return genericDao.query(currentPage, statement, parameter);
     }
 
     @Override
