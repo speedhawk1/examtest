@@ -61,6 +61,11 @@ public class GenericDaoImpl<T extends Serializable, ID extends Serializable> imp
     }
 
     @Override
+    public List<T> queryAll(String statement, Object parameter) {
+        return sqlSession.selectList(namespace.concat(statement), parameter);
+    }
+
+    @Override
     public void modify(T model) {
         sqlSession.update(namespace.concat("modify"), model);
     }
