@@ -83,8 +83,8 @@ public class GenericDaoImpl<T extends Serializable, ID extends Serializable> imp
         return new Pagination<>(list, statement, Constant.PAGE_SIZE, totalRows, totalPages, page);
     }
 
-    private int getTotalRows(String selectId, Object parameter) {
-        List<T> list = sqlSession.selectList(namespace.concat(selectId), parameter);
+    private int getTotalRows(String statement, Object parameter) {
+        List<T> list = sqlSession.selectList(namespace.concat(statement), parameter);
         return list.size();
     }
 }
